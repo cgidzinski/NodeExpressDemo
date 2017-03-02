@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Test Html </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css"> </head>
+
+<body>
+    <h1>Todo List</h1>
+    <hr>
+    <input type="text" id="input" placeholder="todo item"></input>
+    <ul id="todo-list"> </ul>
+</body>
+
+</html>
+<script type="text/javascript">
+window.onload = () => {
+    var input = document.getElementById('input');
+    input.onkeydown = (keyEvent) => {
+        if (keyEvent.code === 'Enter') {
+            const text = input.value;
+            const item = document.createElement('li');
+            item.innerHTML = text;
+            item.className = 'card';
+            const todoList = document.getElementById('todo-list');
+            item.onclick = () => {
+                todoList.removeChild(item);
+            }
+            todoList.appendChild(item);
+            input.value = "";
+        }
+    };
+};
+</script>

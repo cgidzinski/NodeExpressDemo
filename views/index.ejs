@@ -1,0 +1,30 @@
+<!doctype html>
+
+<head>
+    <%= include /header.ejs %>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="input" placeholder="todo item"></input>
+    <ul id="todo-list">
+        <% for(var i=0; i<todoList.length; i++) {%>
+            <li class="card">
+                <%= todoList[i].text %> <br>
+                    <%= todoList[i].date %>
+                        <hr> <a href="todo/del/<%= todoList[i]._id %>">Delete</a> </li>
+            <% } %>
+    </ul>
+</body>
+
+</html>
+<script type="text/javascript">
+window.onload = () => {
+    var input = document.getElementById('input');
+    input.onkeydown = (keyEvent) => {
+        if (keyEvent.code === 'Enter') {
+            window.location.href = 'todo/add/?text=' + input.value;
+        }
+    };
+};
+</script>
